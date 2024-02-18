@@ -4,6 +4,7 @@ List_t pxReadyTasksLists[configMAX_PRIORITIES];
 TCB_t *pxCurrentTCB = NULL;
 
 extern TCB_t Task1TCB;
+extern TCB_t Task2TCB;
 
 #if (configSUPPORT_STATIC_ALLOCATION == 1)
 
@@ -97,6 +98,19 @@ void vTaskStartScheduler(void)
 
     if (xPortStartScheduler() != pdFALSE)
         ;
+}
+
+void vTaskSwitchContext(void)
+{
+    /* 两个任务轮流切换 */
+    if (pxCurrentTCB == &Task1TCB)
+    {
+        pxCurrentTCB = &Task2TCB;
+    }
+    else
+    {
+        pxCurrentTCB = &Task1TCB;
+    }
 }
 
 #endif /* configSUPPORT_STATIC_ALLOCATION */

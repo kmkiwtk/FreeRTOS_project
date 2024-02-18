@@ -41,6 +41,11 @@ BaseType_t xPortStartScheduler(void);
 void prvStartFirstTask(void);
 
 /**
- * @brief SVC中断处理函数
+ * @brief SVC中断处理函数，用于请求操作系统服务的软件中断
  */
 void vPortSVCHandler(void);
+
+/**
+ * @brief PendSV中断处理函数，用于任务调度的软件中断
+ */
+void xPortPendSVHandle(void)

@@ -30,6 +30,7 @@ typedef uint32_t TickType_t;
 
 #define protSY_FULL_READ_WRITE (15)
 
+/* 触发PendSV, 产生上下文切换 */
 #define portYIELD()                                     \
     {                                                   \
         portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT; \
